@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shipping Request</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.sender.label }} {{ form.sender }}
+        </div>
+        <div>
+            {{ form.recipient.label }} {{ form.recipient }}
+        </div>
+        <div>
+            {{ form.origin.label }} {{ form.origin }}
+        </div>
+        <div>
+            {{ form.destination.label }} {{ form.destination }}
+        </div>
+        <div>
+            {{ form.express_shipping.label }} {{ form.express_shipping }}
+        </div>
+        <div>{{ form.ship }}</div>
+        <div>{{ form.cancel }}</div>
+    </form>
+</body>
+</html>
