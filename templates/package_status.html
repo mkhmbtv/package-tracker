@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Package Status</title>
+</head>
+<body>
+    <a href="/new_package">Send a new package</a>
+    <h2>Package Status</h2>
+    <ul>
+        {% for package in packages %}
+            <li>
+                <p>id: {{ package.id }}</p>
+                <p>Sender: {{ package.sender }}</p>
+                <p>Recipient: {{ package.recipient }}</p>
+                <p>Origin: {{ package.origin }}</p>
+                <p>Destination: {{ package.destination }}</p>
+                <p>Location: {{ package.location }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

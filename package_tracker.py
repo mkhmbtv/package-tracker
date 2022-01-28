@@ -11,15 +11,16 @@ migrate = Migrate(app, db)
 
 
 @app.route('/')
-def index():
-    return 'Package Tracker'
+def root_endpoint():
+    packages = Package.query.all()
+    return render_template('package_status.html', packages=packages)
 
 
 @app.route('/new_package', methods=['GET', 'POST'])
 def add_package():
     form = ShippingForm()
-    if request.method == 'POST' and form.cancel.data:
-        return redirect(url_for('.add_package'))
+    if form.cancel.data:
+        return redirect('/')
     if form.validate_on_submit():
         data = form.data
         new_package = Package(sender=data['sender'],
@@ -29,5 +30,6 @@ def add_package():
                               location=data['origin'])
         db.session.add(new_package)
         db.session.commit()
+        Package.advance_all_locations()
         return redirect('/')
     return render_template('shipping_request.html', form=form)
