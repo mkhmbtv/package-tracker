@@ -1,4 +1,3 @@
-from curses.ascii import DEL
 from flask_sqlalchemy import SQLAlchemy
 from map.map import advance_delivery, DELIVERED
 
